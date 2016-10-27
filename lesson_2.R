@@ -48,10 +48,28 @@ is.prime(10)
 #4
 for (i in 1:20){
   if (i %% 5 == 0){
-    print("Good: NUMBER")
+    print("Good:")
     print(i)
     if (i %% 5 == 0 & is.prime(i) == TRUE){
-      print("Job: NUMBER")
+      print("Job:")
       print(i)}
   }
 }
+
+#5
+gompertz <- function(a, b, c, t){
+  y = a*exp(-b*exp(-c*t))
+  return(y)
+}
+gompertz(100, 0.1, 5, 10)
+
+#6
+gompertz.time <- function(x,y){
+  x = t$gompertz
+  y = gompertz(y)
+  
+  
+
+
+
+
