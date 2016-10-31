@@ -59,7 +59,8 @@ min(b) #gives 1
 paste(1:12)
 #[1] "1"  "2"  "3"  "4"  "5"  "6"  "7"  "8"  "9"  "10"
 
-# read.csv, read.table, write.csv, write.table- Reads a file in table format and creates a data frame from it, with cases corresponding to lines and variables to fields in the file.
+# read.csv, read.table - Reads a file in table format and creates a data frame from it, with cases corresponding to lines and variables to fields in the file.
+#write.csv, write.table- prints its required argument x (after converting it to a data frame if it is not one nor a matrix) to a file or connection.
 
 # pnorm - distribution function for the normal distribution
 # dnorm - density for the normal distribution

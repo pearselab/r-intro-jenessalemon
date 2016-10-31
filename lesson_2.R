@@ -26,7 +26,7 @@ for (i in 20:10) {
     }
 } 
 
-#3"
+#3
 is.prime <- function(x){
   for (i in 2:(x-1)) {
     flag = x %% i
@@ -64,10 +64,49 @@ gompertz <- function(a, b, c, t){
 gompertz(100, 0.1, 5, 10)
 
 #6
-gompertz.time <- function(x,y){
-  x = t$gompertz
-  y = gompertz(y)
+time <- seq(0, 60, by = 1) #creating a sequence of time 
+time                       #printing ot make sure it worked
+plot.gompertz <- function(a, b, c, t, ...){
+  for (i in 0:length(time){                   #for each time, 
+    points <- gompertz(a, b, c, t ...)        #points is a vector containing the population size data for each point.
+  }
+  print(points) #the points are not being stored into this vector. The print statement shows that.
+  plot(time, points, xlab = "Time", ylab = "Population Size", main = "Progress of Population Over Time")
+}
+plot.gompertz <- function(10, 5, 38, 3, ...)
   
+plot.gompertz <- function(a, b, c, t){
+  for (t in 0:
+}
+
+
+
+#7
+  
+#8
+  
+#9.
+#cat("*****", "\n", "*   *", "\n", "*****")  not a function, but works kinda.
+box = function(length, width){
+  vector <- (rep("*"), x)
+  cat(vector, "\n")
+  cnt
+}
+  
+cat("*****", "\n", "*   *", "\n", "*****")  
+
+ImABox <- function(width,height){
+  ast.vect <- c("*")
+  cat(noquote(paste(rep(ast.vect, times = width), collapse = ""))) #saying repeat asteric vector the same number of times as width
+  cat("\n")     #saying to go to the next line, if you don't do this it won't move to the middle section
+  for (i in width){
+    cat(ast.vect, paste(rep(" ", times=(1/2*(width-2)))), ast.vect) #something is wrong here
+  }
+  cat("\n") 
+  cat(noquote(paste(rep(ast.vect, times = width), collapse = ""))) #last line
+}
+ImABox(3, 5)
+
   
 
 
