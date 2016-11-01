@@ -96,6 +96,7 @@ plot.gompertz <- function(time1, time2, by, a, b, c){
       }else{
         color[i] <- "black"
       }
+    }
     if(a > b){
       if(points > a){
         color[i] <- "blue"
@@ -135,6 +136,9 @@ if(points > a & points < b){
 '''
   
 #8
+if(points >a & points >b){
+  color[i] <- "purple"
+}
   
 #9.
 #cat("*****", "\n", "*   *", "\n", "*****")  not a function, but works kinda.
