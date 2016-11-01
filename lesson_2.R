@@ -10,7 +10,7 @@ if(value < 5){
   print("Greater than or equal to five!")
 }
 
-Exercises:
+#Exercises: Complete: 1, 2, 3, 4, 5, 6, 
 #1
   for (i in 20:10){
   print (i)
@@ -64,24 +64,75 @@ gompertz <- function(a, b, c, t){
 gompertz(100, 0.1, 5, 10)
 
 #6
-time <- seq(0, 60, by = 1) #creating a sequence of time 
-time                       #printing ot make sure it worked
-plot.gompertz <- function(a, b, c, t, ...){
-  for (i in 0:length(time){                   #for each time, 
-    points <- gompertz(a, b, c, t ...)        #points is a vector containing the population size data for each point.
-  }
-  print(points) #the points are not being stored into this vector. The print statement shows that.
-  plot(time, points, xlab = "Time", ylab = "Population Size", main = "Progress of Population Over Time")
+plot.gompertz <- function(time1, time2, by, a, b, c){
+  time <- seq(time1, time2, by)     #creates a vector of time values
+  vect <- c(NA)               #creates an empty vector
+  for (i in 1:length(time)){                   #for each time, 
+    points <- gompertz(time1+(i-1)*by, a, b, c)    #Why are we minusing and then timsing by by?    #points is a vector containing the population size data for each point.
+    vect[i] <- points
+    }
+    print(points) #the points are not being stored into this vector. The print statement shows that.
+    plot(x=time, y=vect, xlab="Time", ylab="Population Size", main="Progress of Population Over Time")
+    abline(h=a, col="blue")
+    abline(h=b, col="red")
 }
-plot.gompertz <- function(10, 5, 38, 3, ...)
+plot.gompertz(1, 5, 0.5, 38, 3, 5)
+
   
-plot.gompertz <- function(a, b, c, t){
-  for (t in 0:
-}
-
-
-
 #7
+plot.gompertz <- function(time1, time2, by, a, b, c){
+  time <- seq(time1, time2, by)     #creates a vector of time values
+  vect <- c(NA)               #creates an empty vector
+  color <- c(NA)              #here we                                                
+  for (i in 1:length(time)){                   #for each time, 
+    points <- gompertz(time1+(i-1)*by, a, b, c)    #Why are we minusing and then timsing by by?    #points is a vector containing the population size data for each point.
+    vect[i] <- points
+    if(b > a){
+      if(points > b){
+      color[i] <- "red"
+      }
+      if(points > a & points < b){
+        color[i] <- "blue"
+      }else{
+        color[i] <- "black"
+      }
+    if(a > b){
+      if(points > a){
+        color[i] <- "blue"
+      }
+      if(points > b & points < a){
+        color[i] <- "red"
+      }else{
+        color[i] <- "black"
+      }
+    }
+  }
+  plot(x=time, y=vect, xlab="Time", ylab="Population Size", main="Progress of Population Over Time", col=color)
+  abline(h=a, col="blue", lty=2)
+  abline(h=b, col="red", lty=2)
+  print(a)
+  print(b)
+}
+plot.gompertz(1, 5, 0.5, 4, 2, 5)
+
+'''What I had before:
+if(points > a){
+  color[i] <- "blue"
+}else{
+  color[i] <- "black"
+}
+if(points > b){
+  color[i] <- "red"
+}else{
+  color[i] <- "black"
+}
+if(points > b & points < a){
+  color[i] <- "blue"
+}
+if(points > a & points < b){
+  color[i] <- "blue"
+}
+'''
   
 #8
   
