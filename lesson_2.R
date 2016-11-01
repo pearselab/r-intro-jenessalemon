@@ -142,28 +142,69 @@ if(points >a & points >b){
   
 #9.
 #cat("*****", "\n", "*   *", "\n", "*****")  not a function, but works kinda.
-box = function(length, width){
-  vector <- (rep("*"), x)
-  cat(vector, "\n")
-  cnt
-}
-  
-cat("*****", "\n", "*   *", "\n", "*****")  
 
-ImABox <- function(width,height){
-  ast.vect <- c("*")
-  cat(noquote(paste(rep(ast.vect, times = width), collapse = ""))) #saying repeat asteric vector the same number of times as width
-  cat("\n")     #saying to go to the next line, if you don't do this it won't move to the middle section
-  for (i in width){
-    cat(ast.vect, paste(rep(" ", times=(1/2*(width-2)))), ast.vect) #something is wrong here
+#MARLEY, REMIND ME HOW LINE 157 PREVENTS AN INFINITE LOOP.
+
+funbox<-function(len,wid){
+  for (i in 1:len){
+    j<-1                                          #index
+    while(j<=wid){
+      if(i==1 || i==len || j==1 || j==wid){       #|| means "or." We care about these four situations, because they give us the borders of the box.
+        cat("*")
+      }else{                                      #If that is not the case we just want blank space.
+        cat(" ")
+      }
+      j<-j+1                                      #prevents an infinite loop? MARLEY REMIND ME WHY WE DID THIS?
+    } 
+    cat("\n")                                     #We need a new line every iteration.
   }
-  cat("\n") 
-  cat(noquote(paste(rep(ast.vect, times = width), collapse = ""))) #last line
 }
-ImABox(3, 5)
+funbox(5,5)
 
-  
+#10
+'''Attempt 1
+box<-function(len, wid, character.string){
+  length <- c(1:len)
+  for (i in 1:len){
+    j<-1                                          #index
+    while(j<=wid){
+      if(i==1 || i==len || j==1 || j==wid){       #|| means "or." We care about these four situations, because they give us the borders of the box.
+        cat("*")
+      }
+      if(i == median(length)){
+        cat(character.string)
+      }else{                                      #If that is not the case we just want blank space.
+        cat(" ")
+      }
+      j<-j+1                                      #prevents an infinite loop? MARLEY REMIND ME WHY WE DID THIS?
+    } 
+    cat("\n")                                     #We need a new line every iteration.
+  }
+  print(length)
+}
+box(5, 5, "Hi there!")'''
 
 
-
-
+textbox<-function(len, wid, string){
+  length <- max(len, 3)
+  width <- max(wid, nchar(string) + 2)
+  for (i in 1:len){
+    j<-1                                          #index
+    while(j<=wid){
+      if(i==1 || i==len || j==1 || j==wid){       #|| means "or." We care about these four situations, because they give us the borders of the box.
+        cat("*")
+      }else{
+        if(i==ceiling(length/2)                           # Vertical middle
+           & j==ceiling(width/2)-floor(nchar(string)/2)){  # Horizontal middle
+          cat(string)                                      # Printing
+          j<-j+nchar(string)-1 
+          }else{                                      #If that is not the case we just want blank space.
+            cat(" ")
+        }
+      }
+      j<-j+1                                      #prevents an infinite loop? MARLEY REMIND ME WHY WE DID THIS?
+    } #closes the while loop 
+    cat("\n")                                     #We need a new line every iteration.
+  } #closes the for loop
+} #closes the function
+textbox(5,10, "Jenessa Rocks!")
