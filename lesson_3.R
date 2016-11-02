@@ -69,15 +69,17 @@ plot(point_1, point_2)
 #5.
 
 new.polygon <- function(points){
-  output <- list()
-  for (i in 1:length(points)-1){
-    output <- list(output, new.line(points[i], points[i+1]))
+  output <- vector("list", length(points))
+  for (i in 1:(length(points)-1)){
+    output[[i]] <- new.line(points[[i]], points[[i+1]])
+    print(i)
   }
   class(output) <- "polygon"
-  output <- list(output, new.line(points[length(points)], points[1]))
+  output[[length(points)]] <- new.line(points[length(points)], points[1])
   return(output)
 }
-polygon <- new.polygon(list(point_1, point_2, point_3))
+hi <- list(point_1, point_2, point_3)
+polygon <- new.polygon(hi)
 polygon
 
 #6.
@@ -86,13 +88,13 @@ plot.point <- function(point){
 }
 plot.point(point_1)
 
-plot.line <- function(point1, point2){
-  if(!inherits(point1, "point") | !inherits(point2, "point")){
-    stop("You haven't given me two points!")
-  }
-  segments(point1$x, point1$y, point2$x, point2$y)
+plot.line <- function(line){
+  'if(!inherits(point1, "point") | !inherits(point2, "point")){
+    stop("You havent given me two points!")
+  }'
+  segments(line[[1]]$x, line[[1]]$y, line[[2]]$x, line[[2]]$y)
 }
-plot.line(point_1, point_2)
+plot.line(line_1)
 
 
 
@@ -104,10 +106,13 @@ return(out)
 
 #7.
 plot.polygon <- function(polygon){
-  for (i in 1:length(polygon)-1){
-    plot.line(polygon[i])
+  for (i in 1:(length(polygon))){
+    print(polygon[[i]])
+    plot.line(polygon[[i]])
+    print(i)
   }
 }
+print(polygon)
 plot.polygon(polygon)  
 
 
