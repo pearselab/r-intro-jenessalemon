@@ -65,30 +65,54 @@ new.line <- function(point1, point2){
 line_1 <- new.line(point_1, point_2)
 line_2 <- new.line(point_3, point_4)
 plot(point_1, point_2)
+
 #5.
-new.polygon <- function(line1, line2, line3, line4){
-  output <- list(line1, line2, line3, line4)
+
+new.polygon <- function(points){
+  output <- list()
+  for (i in 1:length(points)-1){
+    output <- list(output, new.line(points[i], points[i+1]))
+  }
   class(output) <- "polygon"
+  output <- list(output, new.line(points[length(points)], points[1]))
   return(output)
 }
+polygon <- new.polygon(list(point_1, point_2, point_3))
+polygon
 
 #6.
-plot.point <- function(x,y){
-  plot(point1, point2)
+plot.point <- function(point){
+  plot(point$x, point$y, xlim= c(0,5), ylim = c(0,5))
 }
-plot.line <- function(line1, line2){
-  if(!inherits(line1, "line") | !inherits(line2, "line")){
-    stop("You haven't given me two lines!")
+plot.point(point_1)
+
+plot.line <- function(point1, point2){
+  if(!inherits(point1, "point") | !inherits(point2, "point")){
+    stop("You haven't given me two points!")
   }
-  plot(line1, line2)
+  segments(point1$x, point1$y, point2$x, point2$y)
 }
+plot.line(point_1, point_2)
 
 
 
 polygon.generator <- new.polygon(point1, point2, point3, point4)
 if(!inherits(point1, "point") | !inherits(point2, "point"), !inherits(point3, "point") | !inherits(point4, "point"))
   stop("You haven't given me four points!")
-    out = list(new.line(point1, point2), new.line(point2, point3), new.line(point3, point4), new.line(point4, point1))
-      return(out)
+out = list(new.line(point1, point2), new.line(point2, point3), new.line(point3, point4), new.line(point4, point1))
+return(out)
 
-  
+#7.
+plot.polygon <- function(polygon){
+  for (i in 1:length(polygon)-1){
+    plot.line(polygon[i])
+  }
+}
+plot.polygon(polygon)  
+
+
+#8.
+
+#9.
+
+#10.

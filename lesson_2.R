@@ -136,9 +136,45 @@ if(points > a & points < b){
 '''
   
 #8
-if(points >a & points >b){
-  color[i] <- "purple"
+plot.gompertz <- function(time1, time2, by, a, b, c){
+  time <- seq(time1, time2, by)     #creates a vector of time values
+  vect <- c(NA)               #creates an empty vector
+  color <- c(NA)              #here we                                                
+  for (i in 1:length(time)){                   #for each time, 
+    points <- gompertz(time1+(i-1)*by, a, b, c)    #Why are we minusing and then timsing by by?    #points is a vector containing the population size data for each point.
+    vect[i] <- points
+    if(b > a){
+      if(points > b){
+        color[i] <- "red"
+      }
+      if(points > a & points < b){
+        color[i] <- "blue"
+      }else{
+        color[i] <- "black"
+      }
+    }
+    if(a > b){
+      if(points > a){
+        color[i] <- "blue"
+      }
+      if(points > b & points < a){
+        color[i] <- "red"
+      }else{
+        color[i] <- "black"
+      }
+      if(points >a & points >b){
+        color[i] <- "purple"
+      }
+    }
+  }
+  plot(x=time, y=vect, xlab="Time", ylab="Population Size", main="Progress of Population Over Time", col=color)
+  abline(h=a, col="blue", lty=2)
+  abline(h=b, col="red", lty=2)
+  print(a)
+  print(b)
 }
+plot.gompertz(1, 5, 0.5, 4, 2, 5)
+
   
 #9.
 #cat("*****", "\n", "*   *", "\n", "*****")  not a function, but works kinda.
@@ -189,8 +225,6 @@ textbox<-function(len, wid, string){
   length <- max(len, 3)
   width <- max(wid, nchar(string) + 2)
   for (i in 1:len){
-    j<-1                                          #index
-    while(j<=wid){
       if(i==1 || i==len || j==1 || j==wid){       #|| means "or." We care about these four situations, because they give us the borders of the box.
         cat("*")
       }else{
@@ -201,10 +235,24 @@ textbox<-function(len, wid, string){
           }else{                                      #If that is not the case we just want blank space.
             cat(" ")
         }
-      }
-      j<-j+1                                      #prevents an infinite loop? MARLEY REMIND ME WHY WE DID THIS?
+      }                                    #prevents an infinite loop? MARLEY REMIND ME WHY WE DID THIS?
     } #closes the while loop 
     cat("\n")                                     #We need a new line every iteration.
   } #closes the for loop
 } #closes the function
 textbox(5,10, "Jenessa Rocks!")
+
+
+#10
+textbox <- function(len, wid, string){
+  empty.box <- matrix(data = NA, nrow = len, ncol = wid)
+  for (i in empty.box){
+    if (i=1){
+      print ("*")
+    }else{
+      cat(" ")
+    }
+  }
+}
+textbox(5, 5, "Hi")
+
