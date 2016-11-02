@@ -18,23 +18,34 @@
 
 ########################################################################
 #1
-replicate(10,rnorm(1, rnorm(1), runif(1, min = 0)))
+data <- replicate(10,rnorm(1, rnorm(1), runif(1, min = 0)))
 
 #2
 my.summary <- function(input){
   cat("  Min     ", "Max     ", "Mean      ", "Median     ", "\n", min(input), max(input), mean(input), median(input))
 }
-my.summary(replicate(10,rnorm(1, rnorm(1), runif(1, min = 0))))
+my.summary(data)
 
 #3
-cat.sum <- function(input)
-  cat()
+things <- c("candy", "unicorns", "rainbows")
 my.categorical.summary <- function(input){
-  if(!inherits(input, "character")){
-    stop("Input is not categorical.")
-  }else{my.summary(input)}
+  sweet <- class(input)
+  measure <- length(input)
+  return(c(sweet, input))
 }
-my.categorical.summary(replicate(10,rnorm(1, rnorm(1), runif(1, min = 0))))
 
+my.categorical.summary(things)
 
+#4
+flexible.summary <- function(input){
+  if(is.numeric(input)){
+    return(my.summary(input))
+  }else{
+    return(my.categorical.summary(input))
+  }
+}
+flexible.summary(data)
+flexible.summary(things)
+
+#5
 

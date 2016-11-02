@@ -96,14 +96,6 @@ plot.line <- function(line){
 }
 plot.line(line_1)
 
-
-
-polygon.generator <- new.polygon(point1, point2, point3, point4)
-if(!inherits(point1, "point") | !inherits(point2, "point"), !inherits(point3, "point") | !inherits(point4, "point"))
-  stop("You haven't given me four points!")
-out = list(new.line(point1, point2), new.line(point2, point3), new.line(point3, point4), new.line(point4, point1))
-return(out)
-
 #7.
 plot.polygon <- function(polygon){
   for (i in 1:(length(polygon))){
