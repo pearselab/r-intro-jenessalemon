@@ -75,7 +75,7 @@ new.polygon <- function(points){
     print(i)
   }
   class(output) <- "polygon"
-  output[[length(points)]] <- new.line(points[length(points)], points[1])
+  output[[length(points)]] <- new.line(points[[length(points)]], points[[1]])
   return(output)
 }
 hi <- list(point_1, point_2, point_3)
@@ -99,13 +99,14 @@ plot.line(line_1)
 #7.
 plot.polygon <- function(polygon){
   for (i in 1:(length(polygon))){
-    print(polygon[[i]])
+    print(i)
     plot.line(polygon[[i]])
     print(i)
   }
 }
 print(polygon)
-plot.polygon(polygon)  
+plot.polygon(polygon)  #use str() and compare.
+
 
 
 #8.
