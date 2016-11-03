@@ -290,6 +290,25 @@ species.abundance <- function(n, p, lambda){
   }
 }
 species.abundance(5, 0.7, .5)
+
+#13
+'''Create function that takes the number of sites, and vectors of species, and of their p and lambda values
+initialize an empty vector the same size as the number of species
+evaluate each species with species.abundance
+store the results in a matrix
+return the matrix'''
+
+hurdle <- function(nsites, species, pvals, lambdas){
+  results <- matrix(NA, nrow=nsites, ncol= length(species))
+  for (i in results){
+    results[i] <- species.abundance(1, pvals[i], lambdas[i])
+  }
+  return(results)
+}
+eriogonum = c("longilobum", "soredium", "shockleyi")
+prob <- c(0.5, 0.5, 0.5)
+lambda.list <- c(1, 1.1, 0.9)
+hurdle(5, eriogonum, prob, lambda.list)
   
 
   
