@@ -219,16 +219,8 @@ box<-function(len, wid, string){
 box(5, 5, "Hi there!")
 
 
-textbox<-function(len, height, string){
-  box <- matrix(data = "*", nrow = height, ncol = len)
-  for (row in box){
-    if(i == 2){
-      cat("Hi")
-    }
-  }
-  print(box)
-}
-textbox(5, 5, "Jenessa")
+'''English Algorithm:'''
+
   
    
 }
@@ -300,8 +292,12 @@ return the matrix'''
 
 hurdle <- function(nsites, species, pvals, lambdas){
   results <- matrix(NA, nrow=nsites, ncol= length(species))
+  values <- (1:length(species))
+  for (i in values){
+    values[i] <- species.abundance(1, pvals[i], lambdas[i])
+  }
   for (i in results){
-    results[i] <- species.abundance(1, pvals[i], lambdas[i])
+    results[i] <- values[i]
   }
   return(results)
 }
@@ -312,7 +308,11 @@ hurdle(5, eriogonum, prob, lambda.list)
   
 
   
-
+values <- (1:3)
+for (i in values){
+  values[i] <- species.abundance(1, prob[i], lambda.list[i])
+}
+values
 
 
 
