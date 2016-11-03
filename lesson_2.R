@@ -264,9 +264,9 @@ textbox(5, 5, "Hi")
 
 
 #12
-'''Bernouli Distribution is a special case of the Binomial distribution where n = 1.
-Algorithm: Part 1. Need a function to simulate the probablility that is species will be present at a site.
-  I need a Binomial distribution with 1 draw, and varying probablility.'''
+'''Bernoulli Distribution is a special case of the Binomial distribution where n = 1.
+Algorithm: Part 1. Need a function to simulate the probability that a species will be present at a site.
+  I need a Binomial distribution with 1 draw, and varying probability.'''
 
 species.presence <- function(p){
   draw <- rbinom(1, 1, p)
@@ -274,16 +274,18 @@ species.presence <- function(p){
 }
 species.presence(0.7)
 
-'''This resturns a 1 if the species is present, and a 0 if it is not.
-Part 2: we need to write a function for abundance, but only if there is indeed, species present. So we probably need an in statement.
-The abundance shouldnt differ much from the presence function, exept now we are sampling from a Poisson distribution, and also we need to evaluate at n sites (which should require a for loop).'''
+'''This returns a 1 if the species is present, and a 0 if it is not.
+Part 2: we need to write a function for abundance, but only if there is indeed, species present. So we probably need an if statement.
+The abundance shouldnt differ much from the presence function, except now we are sampling from a Poisson distribution, and also we need to evaluate at n sites (which should require a for loop).'''
 
 species.abundance <- function(n, p, lambda){
+  sites <- (1:n)
   for (i in 1:n){
-    if (species.presence(p) == 1){    #only need to determine abundance if a species is present!
-    return(rpois(1, lambda))
+    if (species.presence(p) == 1){
+      sites[i] <- rpois(1, lambda)
     }else{
-      cat("There are no species present at this site.")
+      sites[i] <- 0
+      return(sites)
     }
   }
 }

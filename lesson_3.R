@@ -51,7 +51,7 @@ point_4 <- new.point(x=1, y=5)
 distance <- function(point1,point2) {
   if(!inherits(point1, "point") | !inherits(point2, "point"))
     stop("You haven't given me two points!")
-  out = sqrt((point2$y - point1$y)^2 + (point2$x-point1$x)^2)
+  out <- sqrt((point2$y - point1$y)^2 + (point2$x-point1$x)^2)
   return(out)
 }
 distance(point_1, point_2)
