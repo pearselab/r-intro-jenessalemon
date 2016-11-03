@@ -198,14 +198,12 @@ funbox<-function(len,wid){
 funbox(5,5)
 
 #10
-'''Attempt 1
-box<-function(len, wid, character.string){
+Attempt 1
+box<-function(len, wid, string){
   length <- c(1:len)
+  width <- c(1:wid)
   for (i in 1:len){
-    j<-1                                          #index
-    while(j<=wid){
-      if(i==1 || i==len || j==1 || j==wid){       #|| means "or." We care about these four situations, because they give us the borders of the box.
-        cat("*")
+    cat("")
       }
       if(i == median(length)){
         cat(character.string)
@@ -218,16 +216,23 @@ box<-function(len, wid, character.string){
   }
   print(length)
 }
-box(5, 5, "Hi there!")'''
+box(5, 5, "Hi there!")
 
 
-textbox<-function(len, wid, string){
-  length <- max(len, 3)
-  width <- max(wid, nchar(string) + 2)
-  for (i in 1:len){
-      if(i==1 || i==len || j==1 || j==wid){       #|| means "or." We care about these four situations, because they give us the borders of the box.
-        cat("*")
-      }else{
+textbox<-function(len, height, string){
+  box <- matrix(data = "*", nrow = height, ncol = len)
+  for (row in box){
+    if(i == 2){
+      cat("Hi")
+    }
+  }
+  print(box)
+}
+textbox(5, 5, "Jenessa")
+  
+   
+}
+  else{
         if(i==ceiling(length/2)                           # Vertical middle
            & j==ceiling(width/2)-floor(nchar(string)/2)){  # Horizontal middle
           cat(string)                                      # Printing
@@ -235,7 +240,6 @@ textbox<-function(len, wid, string){
           }else{                                      #If that is not the case we just want blank space.
             cat(" ")
         }
-      }                                    #prevents an infinite loop? MARLEY REMIND ME WHY WE DID THIS?
     } #closes the while loop 
     cat("\n")                                     #We need a new line every iteration.
   } #closes the for loop
@@ -255,4 +259,29 @@ textbox <- function(len, wid, string){
   }
 }
 textbox(5, 5, "Hi")
+
+
+
+
+#12
+'''Bernouli Distribution is a special case of the Binomial distribution where n = 1.
+Algorithm: Part 1. Need a function to simulate the probablility that is species will be present at a site.
+  I need a Binomial distribution with 1 draw, and varying probablility.'''
+
+species.presence <- function(p){
+  draw <- rbinom(1, 1, p)
+  return(draw)
+}
+species.presence(0.7)
+
+'''This resturns a 1 if the species is present, and a 0 if it is not.
+Part 2: we need to 
+
+species.abundance -> function(n, p, lambda)
+  
+
+  
+
+
+
 

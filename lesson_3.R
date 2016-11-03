@@ -107,8 +107,6 @@ plot.polygon <- function(polygon){
 print(polygon)
 plot.polygon(polygon)  #use str() and compare.
 
-
-
 #8.
 
 #9.
