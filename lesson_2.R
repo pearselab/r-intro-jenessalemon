@@ -276,7 +276,7 @@ species.presence(0.7)
 
 '''This resturns a 1 if the species is present, and a 0 if it is not.
 Part 2: we need to write a function for abundance, but only if there is indeed, species present. So we probably need an in statement.
-The abundance shouldnt differ much from the presence function, exept now we are sampling from a Poisson.'''
+The abundance shouldnt differ much from the presence function, exept now we are sampling from a Poisson distribution, and also we need to evaluate at n sites (which should require a for loop).'''
 
 species.abundance <- function(n, p, lambda){
   for (i in 1:n){
