@@ -67,7 +67,6 @@ line_2 <- new.line(point_3, point_4)
 plot(point_1, point_2)
 
 #5.
-
 new.polygon <- function(points){
   output <- vector("list", length(points))
   for (i in 1:(length(points)-1)){

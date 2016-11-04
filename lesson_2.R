@@ -308,11 +308,11 @@ store the results in a matrix
 return the matrix'''
 
 hurdle <- function(nsites, species, pvals, lambdas){
-  matrix <- matrix(NA, nrow=nsites, ncol= length(species))
+  results <- matrix(NA, nrow=nsites, ncol= length(species))
   for (i in nsites){
     my.matrix[,i] <- species.abundance(1, pvals[i], lambdas[i])
   }
-  return(matrix)
+  return(results)
 }
 eriogonum = c("longilobum", "soredium", "shockleyi")
 prob <- c(0.5, 0.5, 0.5)
@@ -320,5 +320,28 @@ lambda.list <- c(0.5, 0.5, 0.5)
 hurdle(5, eriogonum, prob, lambda.list)
 
 #14
+'''In English first"
+start the function
+initialize a vector that stores lat and long values?
+create a for loop to loop through the vector 100 times
+draw random variables for lat and long (x and y coordinates)
+store these as points
+plot the points, somehow making lines between them?'''
+dumb.biologist <- function(time)
+  timestep <- c(x=0, y=0)
+  for (x in 1:timestep){
+    timestep[x] <- timestep[x] + rnorm(1, 0, 1)
+  }
+  for (y in 1:timestep){
+    timestep[y] <- timestep[y] + rnorm(1, 0, 1)
+  }
+  plot(timestep)
+}
+
+
+
+
+
+#15 
 
 
