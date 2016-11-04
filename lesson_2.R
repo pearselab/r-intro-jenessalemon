@@ -341,9 +341,9 @@ dumb.biologist <- function(time){
 dumb.biologist(100)
 
 #15 
-In English:'''
-going to need a distance element. mayb
-dead.'''
+# In English:
+# I am going to use a for loop to store lat and long, and update it with each new random interation
+# I will write an if statement that breaks when the distance becomes greater than 5, and reports what the time step was
 
 dead.biologist <- function(time){
   lat <- c(2:time)
@@ -351,16 +351,17 @@ dead.biologist <- function(time){
   distance <- sqrt((lat*lat) + (long*long))
   for (i in lat){
     lat[i] <- lat[i-1] + rnorm(1, 0, 1)
+    print(distance[i])
   }
   for (i in long){
     long[i] <- long[i-1] + rnorm(1, 0, 1)
+    print(distance[i])
   }
-  print(distance)
   if (distance[i] >= 5){
     return(i)
     break
   }
   plot(x = lat, y = long, xlim = c(-5, 5), ylim = c(-5, 5))
 }
-dead.biologist(100)
+dead.biologist(1000)
 
