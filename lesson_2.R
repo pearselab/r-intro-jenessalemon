@@ -341,6 +341,26 @@ dumb.biologist <- function(time){
 dumb.biologist(100)
 
 #15 
-'''In English:
-going to need a distance element. mayb 
+In English:'''
+going to need a distance element. mayb
+dead.'''
+
+dead.biologist <- function(time){
+  lat <- c(2:time)
+  long <- c(2:time)
+  distance <- sqrt((lat*lat) + (long*long))
+  for (i in lat){
+    lat[i] <- lat[i-1] + rnorm(1, 0, 1)
+  }
+  for (i in long){
+    long[i] <- long[i-1] + rnorm(1, 0, 1)
+  }
+  print(distance)
+  if (distance[i] >= 5){
+    return(i)
+    break
+  }
+  plot(x = lat, y = long, xlim = c(-5, 5), ylim = c(-5, 5))
+}
+dead.biologist(100)
 
