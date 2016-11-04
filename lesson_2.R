@@ -221,49 +221,54 @@ textbox(5, 10)'''
 print borders
 find middle line and print the words'''
 
-textbox<-function(len,wid, words){
-  for (i in 1:len){
+textbox<-function(length, width, message){
+  width <- max(width, nchar(message)+2)
+  length <- max(length, 3)
+  for (i in 1:length){
     j<-1                                          #index
-    while(j<=wid){
-      if(i==1 || i==len || j==1 || j==wid){       #|| means "or." We care about these four situations, because they give us the borders of the box.
+    while(j<=width){
+      if(i==1 || i==len || j==1 || j==width){       #|| means "or." We care about these four situations, because they give us the borders of the box.
         cat("*")
-      }else{                                      #If that is not the case we just want blank space.
-        cat(" ")
-      }
-      if (i == ceiling(len/2) && i == ceiling(wid/2)){
-        cat(words)
-      }else{
-        cat(" ")
-      }
-      j<-j+1                                      #prevents an infinite loop? MARLEY REMIND ME WHY WE DID THIS?
-    } 
-    cat("\n")                                     #We need a new line every iteration.
+      }else{  
+        if(i==ceiling(length/2)                           # Puts the words in the middle of the box vertically
+           && j==ceiling(width/2)-floor(nchar(message)/2)){  # Puts the words in the middle of the box horizontally and makes it center instead of left align
+          cat(message)                                      # Prints the words from the function
+          j<-j+nchar(message)-1                             # Get rid of blank spaces so the box is actually a box and not something funky
+        }else{
+        cat(" ") 
+        }
+      } 
+      j <- j + 1
+    }
+    cat("\n")
   }
 }
 textbox(5,5, "Jenessa")
 
-#11
-jibberish.box<-function(len, wid, jibberish, words){
-  for (i in 1:len){
+#11 This is not spaced out right, but it's the best I could do.
+jib.box<-function(length, width, jibberish, message){
+  width <- max(width, nchar(message)+2)
+  length <- max(length, 3)
+  for (i in 1:length){
     j<-1                                          #index
-    while(j<=wid){
-      if(i==1 || i==len || j==1 || j==wid){       #|| means "or." We care about these four situations, because they give us the borders of the box.
+    while(j<=width){
+      if(i==1 || i==len || j==1 || j==width){       #|| means "or." We care about these four situations, because they give us the borders of the box.
         cat(jibberish)
-      }else{                                      #If that is not the case we just want blank space.
-        cat(" ")
-      }
-      if (i == ceiling(len/2) & i == ceiling(wid/2)){
-        cat(words)
-      }else{
-        cat(" ")
-      }
-      j<-j+1                                      #prevents an infinite loop? MARLEY REMIND ME WHY WE DID THIS?
-    } 
-    cat("\n")                                     #We need a new line every iteration.
+      }else{  
+        if(i==ceiling(length/2)                           # Puts the words in the middle of the box vertically
+           && j==ceiling(width/2)-floor(nchar(message)/2)){  # Puts the words in the middle of the box horizontally and makes it center instead of left align
+          cat(message)                                      # Prints the words from the function
+          j<-j+nchar(message)-1                             # Get rid of blank spaces so the box is actually a box and not something funky
+        }else{
+          cat(" ") 
+        }
+      } 
+      j <- j + 1
+    }
+    cat("\n")
   }
 }
-jibberish.box(5,5, "xyz", "Jenessa")
-
+jib.box(5,5, "xyz", "Jenessa")
 
 #12
 '''Bernoulli Distribution is a special case of the Binomial distribution where n = 1.
@@ -314,5 +319,6 @@ prob <- c(0.5, 0.5, 0.5)
 lambda.list <- c(0.5, 0.5, 0.5)
 hurdle(5, eriogonum, prob, lambda.list)
 
+#14
 
 
