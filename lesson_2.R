@@ -179,8 +179,6 @@ plot.gompertz(1, 5, 0.5, 4, 2, 5)
 #9.
 #cat("*****", "\n", "*   *", "\n", "*****")  not a function, but works kinda.
 
-#MARLEY, REMIND ME HOW LINE 157 PREVENTS AN INFINITE LOOP.
-
 funbox<-function(len,wid){
   for (i in 1:len){
     j<-1                                          #index
@@ -197,62 +195,74 @@ funbox<-function(len,wid){
 }
 funbox(5,5)
 
-#10
-Attempt 1
-box<-function(len, wid, string){
-  length <- c(1:len)
-  width <- c(1:wid)
-  for (i in 1:len){
-    cat("")
+'''This is my failed attempt at doing the same thing with a for loop:
+  textbox <- function(len, wid) {
+    length <- c(1:len)
+    width <- c(1:wid)
+    for (i in len){
+      if (i == 1 | i == len) {
+        cat"*"
+      }else{
+        cat" "
       }
-      if(i == median(length)){
-        cat(character.string)
+    }
+    for (i in wid){
+      if (i == 1 | i == wid) {
+        cat"*"
+      }else{
+        cat" "
+      }
+    }
+  }
+textbox(5, 10)'''
+
+#10
+'''English attempt:
+print borders
+find middle line and print the words'''
+
+textbox<-function(len,wid, words){
+  for (i in 1:len){
+    j<-1                                          #index
+    while(j<=wid){
+      if(i==1 || i==len || j==1 || j==wid){       #|| means "or." We care about these four situations, because they give us the borders of the box.
+        cat("*")
       }else{                                      #If that is not the case we just want blank space.
+        cat(" ")
+      }
+      if (i == ceiling(len/2) && i == ceiling(wid/2)){
+        cat(words)
+      }else{
         cat(" ")
       }
       j<-j+1                                      #prevents an infinite loop? MARLEY REMIND ME WHY WE DID THIS?
     } 
     cat("\n")                                     #We need a new line every iteration.
   }
-  print(length)
 }
-box(5, 5, "Hi there!")
+textbox(5,5, "Jenessa")
 
-
-'''English Algorithm:'''
-
-  
-   
-}
-  else{
-        if(i==ceiling(length/2)                           # Vertical middle
-           & j==ceiling(width/2)-floor(nchar(string)/2)){  # Horizontal middle
-          cat(string)                                      # Printing
-          j<-j+nchar(string)-1 
-          }else{                                      #If that is not the case we just want blank space.
-            cat(" ")
-        }
-    } #closes the while loop 
+#11
+jibberish.box<-function(len, wid, jibberish, words){
+  for (i in 1:len){
+    j<-1                                          #index
+    while(j<=wid){
+      if(i==1 || i==len || j==1 || j==wid){       #|| means "or." We care about these four situations, because they give us the borders of the box.
+        cat(jibberish)
+      }else{                                      #If that is not the case we just want blank space.
+        cat(" ")
+      }
+      if (i == ceiling(len/2) & i == ceiling(wid/2)){
+        cat(words)
+      }else{
+        cat(" ")
+      }
+      j<-j+1                                      #prevents an infinite loop? MARLEY REMIND ME WHY WE DID THIS?
+    } 
     cat("\n")                                     #We need a new line every iteration.
-  } #closes the for loop
-} #closes the function
-textbox(5,10, "Jenessa Rocks!")
-
-
-#10
-textbox <- function(len, wid, string){
-  empty.box <- matrix(data = NA, nrow = len, ncol = wid)
-  for (i in empty.box){
-    if (i=1){
-      print ("*")
-    }else{
-      cat(" ")
-    }
   }
 }
-textbox(5, 5, "Hi")
-
-
+jibberish.box(5,5, "xyz", "Jenessa")
 
 
 #12
@@ -277,11 +287,13 @@ species.abundance <- function(n, p, lambda){
       sites[i] <- rpois(1, lambda)
     }else{
       sites[i] <- 0
-      return(sites)
     }
+    return(sites)  
   }
 }
 species.abundance(5, 0.7, .5)
+
+
 
 #13
 '''Create function that takes the number of sites, and vectors of species, and of their p and lambda values
@@ -291,28 +303,16 @@ store the results in a matrix
 return the matrix'''
 
 hurdle <- function(nsites, species, pvals, lambdas){
-  results <- matrix(NA, nrow=nsites, ncol= length(species))
-  values <- (1:length(species))
-  for (i in values){
-    values[i] <- species.abundance(1, pvals[i], lambdas[i])
+  matrix <- matrix(NA, nrow=nsites, ncol= length(species))
+  for (i in nsites){
+    my.matrix[,i] <- species.abundance(1, pvals[i], lambdas[i])
   }
-  for (i in results){
-    results[i] <- values[i]
-  }
-  return(results)
+  return(matrix)
 }
 eriogonum = c("longilobum", "soredium", "shockleyi")
 prob <- c(0.5, 0.5, 0.5)
-lambda.list <- c(1, 1.1, 0.9)
+lambda.list <- c(0.5, 0.5, 0.5)
 hurdle(5, eriogonum, prob, lambda.list)
-  
-
-  
-values <- (1:3)
-for (i in values){
-  values[i] <- species.abundance(1, prob[i], lambda.list[i])
-}
-values
 
 
 
