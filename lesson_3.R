@@ -109,14 +109,26 @@ plot.polygon(polygon)  #use str() and compare.
 #8.
 #new.canvas <- function(point, line, circle, polygon)-wrong, because it says create an object??
 
-#9.
-new.circle <- function(point, radius){
-  if (!inherits(point,"point") | !inherits(radius,"line"))
-    stop("Need a center point and radius!")
-  output <- list(center,radius)
+#9. Creating a class of circles, not entirely sure if this is needed, but why not?
+new.circle <- function(middle, radius){
+  if (!inherits(middle,"point") | !inherits(radius,"line"))
+    stop("Need a middle point and radius!")
+  output <- list(middle,radius)
   class(output) <- "circle"
   return(output)
 }
-circle(point_1, line_1)
+circle_1 <- new.circle(point_1, line_1)
+
+
+plot.circle <- function(middle, radius){
+  if (!inherits(middle,"point")){
+    stop("No middle point given!")
+  }
+  t <- seq(0,2*pi,length=10000) 
+  coords <- t(rbind(middle$x+sin(t)*radius, middle$y+cos(t)*radius)) 
+  plot(coords, col = "purple") 
+}
+plot.circle(point_1, 2)
+
 
 #10.
