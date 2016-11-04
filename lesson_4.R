@@ -48,5 +48,6 @@ flexible.summary(data)
 flexible.summary(things)
 
 #5
+#If I had more time, I could get more done on this assignment. I simply ran out of time.
 
 
