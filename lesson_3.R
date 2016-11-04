@@ -118,10 +118,10 @@ plot.circle <- function(middle, radius){
   }
   t <- seq(0,2*pi,length=10000) 
   coords <- t(rbind(middle$x+sin(t)*radius, middle$y+cos(t)*radius)) 
-  plot(coords, col = "purple") 
+  plot(coords, col = "green") 
 }
-circle_1 <- plot.circle(point_1, 2)
-circle_1
+plot.circle(point_1, 2)
+
 
 #10.
 circle.area <- function(circle)
