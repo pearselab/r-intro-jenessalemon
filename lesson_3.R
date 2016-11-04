@@ -107,7 +107,16 @@ print(polygon)
 plot.polygon(polygon)  #use str() and compare.
 
 #8.
+#new.canvas <- function(point, line, circle, polygon)-wrong, because it says create an object??
 
 #9.
+new.circle <- function(point, radius){
+  if (!inherits(point,"point") | !inherits(radius,"line"))
+    stop("Need a center point and radius!")
+  output <- list(center,radius)
+  class(output) <- "circle"
+  return(output)
+}
+circle(point_1, line_1)
 
 #10.
