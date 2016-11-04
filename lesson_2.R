@@ -327,9 +327,9 @@ create a for loop to loop through the vector 100 times
 draw random variables for lat and long (x and y coordinates)
 store these as points
 plot the points, somehow making lines between them?'''
-dumb.biologist <- function(time)
+dumb.biologist <- function(time){
   timestep <- c(x=0, y=0)
-  for (x in 1:timestep){
+  for (x in 1:100){
     timestep[x] <- timestep[x] + rnorm(1, 0, 1)
   }
   for (y in 1:timestep){
@@ -337,7 +337,7 @@ dumb.biologist <- function(time)
   }
   plot(timestep)
 }
-
+dumb.biologist(10)
 
 
 
