@@ -349,18 +349,17 @@ dead.biologist <- function(time){
   lat <- 1
   long <- 1
   distance <- sqrt((lat*lat) + (long*long))
-  for (i in time){
+  for (i in lat){
     lat <- lat[i-1] + rnorm(1, 0, 1)
   }
-  for (i in time){
+  for (i in long){
     long <- long[i-1] + rnorm(1, 0, 1)
   }
   print(distance)
   for (i in long)
-  if (distance > 5){
-    return(i)
-    break
-  }
+    if (distance[i] > 5){
+      return(i)
+      break
+    }
 }
 dead.biologist(100)
-
