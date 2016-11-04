@@ -346,22 +346,21 @@ dumb.biologist(100)
 # I will write an if statement that breaks when the distance becomes greater than 5, and reports what the time step was
 
 dead.biologist <- function(time){
-  lat <- c(2:time)
-  long <- c(2:time)
+  lat <- 1
+  long <- 1
   distance <- sqrt((lat*lat) + (long*long))
   for (i in lat){
-    lat[i] <- lat[i-1] + rnorm(1, 0, 1)
-    print(distance[i])
+    lat <- lat[i-1] + rnorm(1, 0, 1)
   }
   for (i in long){
-    long[i] <- long[i-1] + rnorm(1, 0, 1)
-    print(distance[i])
+    long <- long[i-1] + rnorm(1, 0, 1)
   }
-  if (distance[i] >= 5){
+  print(distance)
+  for (i in long)
+  if (distance[i] > 5){
     return(i)
     break
   }
-  plot(x = lat, y = long, xlim = c(-5, 5), ylim = c(-5, 5))
 }
-dead.biologist(1000)
+dead.biologist(100)
 
