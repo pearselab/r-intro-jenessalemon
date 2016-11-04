@@ -122,6 +122,7 @@ plot.circle <- function(middle, radius){
 }
 plot.circle(point_1, 2)
 
+#NOTE: WE WERE TOLD NOT TO MAKE A CIRCLE OUT OF LINES, SO I MADE IT OUT OF POINTS! WHAT ELSE CAN YOU MAKE A CIRCLE OUT OF?
 
 #10.
 circle.area <- function(circle)
