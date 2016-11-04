@@ -320,7 +320,7 @@ lambda.list <- c(0.5, 0.5, 0.5)
 hurdle(5, eriogonum, prob, lambda.list)
 
 #14
-'''In English first"
+'''In English first:
 start the function
 initialize a vector that stores lat and long values?
 create a for loop to loop through the vector 100 times
@@ -328,21 +328,19 @@ draw random variables for lat and long (x and y coordinates)
 store these as points
 plot the points, somehow making lines between them?'''
 dumb.biologist <- function(time){
-  lat <- 0
-  long <- 0
-  for (x in 1:time){
-    lat <- lat + rnorm(1, 0, 1)
-    long <- long + rnorm(1, 0, 1)
+  lat <- c(2:time)
+  long <- c(2:time)
+  for (i in lat){
+    lat[i] <- lat[i-1] + rnorm(1, 0, 1)
   }
-  for (i in 1:time){
-    plot(x = lat[i], y = long[i], xlim = c(-20, 20), ylim = c(-20, 20))
+  for (i in long){
+    long[i] <- long[i-1] + rnorm(1, 0, 1)
   }
+  plot(x = lat, y = long, xlim = c(-20, 20), ylim = c(-20, 20))
 }
 dumb.biologist(100)
 
-
-
-
 #15 
-
+'''In English:
+going to need a distance element. mayb 
 
