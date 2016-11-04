@@ -328,16 +328,17 @@ draw random variables for lat and long (x and y coordinates)
 store these as points
 plot the points, somehow making lines between them?'''
 dumb.biologist <- function(time){
-  timestep <- c(x=0, y=0)
-  for (x in 1:100){
-    timestep[x] <- timestep[x] + rnorm(1, 0, 1)
+  lat <- 0
+  long <- 0
+  for (x in 1:time){
+    lat <- lat + rnorm(1, 0, 1)
+    long <- long + rnorm(1, 0, 1)
   }
-  for (y in 1:timestep){
-    timestep[y] <- timestep[y] + rnorm(1, 0, 1)
+  for (i in 1:time){
+    plot(x = lat[i], y = long[i], xlim = c(-20, 20), ylim = c(-20, 20))
   }
-  plot(timestep)
 }
-dumb.biologist(10)
+dumb.biologist(100)
 
 
 
